@@ -56,7 +56,7 @@ class DetailDashBoardController: BaseViewController, WebSocketDelegate, UITableV
         
         let startTime = Int(DateConvert.currentTimeFormatter() * 1000 - 7 * 24 * 60 * 60 * 1000)
         let dayTime = 7 * 24 * 60 * 60 * 1000
-        socket.write(string: "{\"tsSubCmds\":[{\"entityType\":\"DEVICE\",\"entityId\":\"\(entityId)\",\"keys\":\"daliy#数量,daliy#电量\",\"startTs\":\(startTime),\"timeWindow\":\(dayTime),\"interval\":1000,\"limit\":10,\"agg\":\"NONE\",\"cmdId\":1}],\"historyCmds\":[],\"attrSubCmds\":[]}")
+        socket.write(string: "{\"tsSubCmds\":[{\"entityType\":\"DEVICE\",\"entityId\":\"\(entityId)\",\"keys\":\"daliy#数量,daliy#电量\",\"startTs\":\(startTime),\"timeWindow\":\(dayTime),\"interval\":1000,\"limit\":100,\"agg\":\"NONE\",\"cmdId\":1}],\"historyCmds\":[],\"attrSubCmds\":[]}")
     }
     
     func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {

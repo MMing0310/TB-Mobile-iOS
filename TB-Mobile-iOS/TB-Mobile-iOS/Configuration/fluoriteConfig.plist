@@ -3,10 +3,10 @@
 <plist version="1.0">
 <dict>
 	<key>appKey</key>
-	<string></string>
+	<string>3184199435964c62a01af25ce686f495</string>
 	<key>appSecret</key>
-	<string></string>
+	<string>5b1951baf61bf66a7c230ef0ae96c4ce</string>
 	<key>rootUrl</key>
-	<string></string>
+	<string>https://open.ys7.com/api/lapp</string>
 </dict>
 </plist>

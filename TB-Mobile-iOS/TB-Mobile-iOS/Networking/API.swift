@@ -53,10 +53,13 @@ let rootURL = UrlManager.manager()["base"]!
 let loginURL = "/api/auth/login"
 // acquire device list
 let prefixURL = "/api/"
-let suffixURL = "/devices?limit=10&textSearch="
-let devicesListURL = "/api/tenant/devices?limit=10&textSearch="
+let suffixURL = "/devices?limit=100&textSearch="
+let devicesListURL = "/api/tenant/devices?limit=100&textSearch="
 // detail device
 let websocktURL = "/api/ws/plugins/telemetry?token="
+// type
+let typeURL = "/api/device/types"
+
 
 // Bearere Token
 let bearereToken = "Bearer "
@@ -71,10 +74,10 @@ var httpHeader = ""
 var tenantURL = "/api/tenant/"
 var dataBoardURL = "/dashboards"
 // dashboard
-var dataURL = "/api/tenant/dashboards?limit=10&textSearch="
+var dataURL = "/api/tenant/dashboards?limit=100&textSearch="
 // customer
 var customerURL = "/api/customer/"
-let userURL = "/users?limit=10"
+let userURL = "/users?limit=100"
 
 // Bugly
 let buglyId = "bb68180a7a"

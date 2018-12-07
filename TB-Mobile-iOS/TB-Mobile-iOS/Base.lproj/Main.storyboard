@@ -1125,7 +1125,7 @@
         <image name="消息" width="42" height="42"/>
         <image name="用户名" width="24" height="24"/>
         <image name="登录背景" width="295" height="62"/>
-        <image name="编辑" width="19" height="18"/>
+        <image name="编辑" width="22" height="22"/>
         <image name="警报" width="42" height="42"/>
         <image name="设备" width="42" height="42"/>
         <image name="通讯录-默认状态" width="23" height="24"/>

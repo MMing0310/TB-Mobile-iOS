@@ -1,8 +1,8 @@
 //
-//  AnalyzeDataController.swift
+//  WKDashViewController.swift
 //  TB-Mobile-iOS
 //
-//  Created by dongmingming on 2018/7/23.
+//  Created by dongmingming on 2018/10/31.
 //  Copyright © 2018年 DongMingMing. All rights reserved.
 //
 
@@ -10,10 +10,9 @@ import UIKit
 import CoreData
 import WebKit
 
-class AnalyzeDataController: BaseViewController, UIWebViewDelegate {
-    
-    @IBOutlet weak var webView: UIWebView!
-    
+class WKDashViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate {
+
+    var webView: WKWebView!
     var myRequest: URLRequest!
     
     override func viewWillAppear(_ animated: Bool) {
@@ -31,14 +30,21 @@ class AnalyzeDataController: BaseViewController, UIWebViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Do any additional setup after loading the view.
-        // title
+        
         self.setNavTitle("数据看板")
+        
+        
+        // wkwebview
+        webView = WKWebView(frame: CGRect(x: 0, y: -60, width: kScreen_W, height: kScreen_H + 60))
+        webView.uiDelegate = self
+        webView.navigationDelegate = self
+        self.view.addSubview(webView)
         
         // Appdelegate
         let app = UIApplication.shared.delegate as! AppDelegate
-
+        
         let possibleCachedResponse = app.cachedResponseForCurrentRequest(webUrl)
         if possibleCachedResponse == nil {
             if #available(iOS 10.0, *) {
@@ -73,21 +79,15 @@ class AnalyzeDataController: BaseViewController, UIWebViewDelegate {
                 })
             }
         }
-       
+        
         self.req()
     }
 
     func req() {
-       
-//        // wkwebview
-//        webView = WKWebView(frame: CGRect(x: 0, y: -60, width: kScreen_W, height: kScreen_H + 60))
-//        webView.uiDelegate = self
-//        webView.navigationDelegate = self
-//        self.view.addSubview(webView)
         
         let url = URL(string:rootURL)
         myRequest = URLRequest(url: url!)
-        webView.loadRequest(myRequest)
+        webView.load(myRequest)
         
         // show MBProgressHUD
         hudManager.showHud(self)
@@ -95,54 +95,27 @@ class AnalyzeDataController: BaseViewController, UIWebViewDelegate {
     }
     
     
-//    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-//        self.hudManager.hideHud(self)
-//        var username = userDefault.object(forKey: "username") as! String
-//        if (!username.contains("@limaicloud.com") && !username.contains("@qq.com")) {
-//            username = username + "@limaicloud.com"
-//        }
-//        let password = userDefault.object(forKey: "password") as! String
-//        let js = "var username = document.getElementById('username-input');" +
-//            "username.value = '\(username)';" +
-//            "username.dispatchEvent(new Event('input'));" +
-//            "var password = document.getElementById('password-input');" +
-//            "password.value = '\(password)';" +
-//            "password.dispatchEvent(new Event('input'));" +
-//        "document.getElementsByTagName('button')[0].click();"
-//
-//        webView.evaluateJavaScript(js) { (result, error) in
-//
-//        }
-//
-//    }
+        func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+            self.hudManager.hideHud(self)
+            var username = userDefault.object(forKey: "username") as! String
+            if (!username.contains("@limaicloud.com") && !username.contains("@qq.com")) {
+                username = username + "@limaicloud.com"
+            }
+            let password = userDefault.object(forKey: "password") as! String
+            let js = "var username = document.getElementById('username-input');" +
+                "username.value = '\(username)';" +
+                "username.dispatchEvent(new Event('input'));" +
+                "var password = document.getElementById('password-input');" +
+                "password.value = '\(password)';" +
+                "password.dispatchEvent(new Event('input'));" +
+            "document.getElementsByTagName('button')[0].click();"
     
-    // UIWebViewDelegate
-    func goForward() {
-        
-        let url = URL(string:rootURL + dataBoardURL)
-        myRequest = URLRequest(url: url!)
-        webView.loadRequest(myRequest)
-    }
+            webView.evaluateJavaScript(js) { (result, error) in
     
-    func webViewDidFinishLoad(_ webView: UIWebView) {
-        self.hudManager.hideHud(self)
-        var username = userDefault.object(forKey: "username") as! String
-        if (!username.contains("@limaicloud.com") && !username.contains("@qq.com")) {
-            username = username + "@limaicloud.com"
+            }
+    
         }
-        let password = userDefault.object(forKey: "password") as! String
-        print("======%@", password)
-        let js = "var username = document.getElementById('username-input');" +
-            "username.value = '\(username)';" +
-            "username.dispatchEvent(new Event('input'));" +
-            "var password = document.getElementById('password-input');" +
-            "password.value = '\(password)';" +
-            "password.dispatchEvent(new Event('input'));" +
-        "document.getElementsByTagName('button')[0].click();"
-        
-        self.webView.stringByEvaluatingJavaScript(from: js)
-    }
-   
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

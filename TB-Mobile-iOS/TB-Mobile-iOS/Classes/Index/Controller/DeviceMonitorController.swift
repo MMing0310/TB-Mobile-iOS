@@ -39,6 +39,8 @@ class DeviceMonitorController: BaseViewController, UITableViewDataSource, UITabl
         super.viewDidLoad()
 
         self.customView()
+        
+        self.requestType()
     }
     
     // set up
@@ -60,14 +62,48 @@ class DeviceMonitorController: BaseViewController, UITableViewDataSource, UITabl
         self.requestData()
     }
     
+    // request type
+    func requestType() {
+        
+        self.typeArray.removeAll()
+        self.typeArray = ["全部"]
+        
+        httpHeader = "X-Authorization"
+        token = userDefault.object(forKey: "token") as! String
+        
+        let manager = WebServices()
+        let apiURL = rootURL + typeURL
+        manager.request(methodType: .GET, urlString: apiURL, parameters: nil) { (result, error) in
+            if (error == nil) {
+                // hidden MBProgressHUD
+                self.hudManager.hideHud(self)
+                let json = JSON(result as Any)
+                print("------%@", json)
+                for typeInfo in json.array! {
+                    let types = typeInfo["type"].string!
+                    self.typeArray.append(types)
+                }
+               
+                // create SYMoreButtonView
+                self.createSYMoreButtonView()
+                
+                self.tableView.reloadData()
+                
+            }else {
+                print("%@", error!)
+                self.hudManager.showTips("请求失败", view: self.view)
+            }
+        }
+    }
+    
     // Network Requests
     func requestData() {
         
         // show MBProgressHUD
         hudManager.showHud(self)
         self.dataSource.removeAllObjects()
-        self.typeArray.removeAll()
-        self.typeArray = ["全部"]
+//        self.typeArray.removeAll()
+//        self.typeArray = ["全部"]
 
         var scope = userDefault.object(forKey: "scopes") as! String
         let customerId = userDefault.object(forKey: "customerId") as! String
@@ -99,11 +135,11 @@ class DeviceMonitorController: BaseViewController, UITableViewDataSource, UITabl
                     let model = DeviceModel(jsonData: deviceInfo)
                     // add dataSource
                     self.dataSource.add(model)
-                    self.typeArray.append(model.type!)
+//                    self.typeArray.append(model.type!)
                 }
 
                 // create SYMoreButtonView
-                self.createSYMoreButtonView()
+//                self.createSYMoreButtonView()
                 
                 self.tableView.reloadData()
 

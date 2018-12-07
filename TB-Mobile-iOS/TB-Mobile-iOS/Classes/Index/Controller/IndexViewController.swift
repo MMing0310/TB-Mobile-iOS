@@ -122,8 +122,10 @@ class IndexViewController: BaseViewController, UITableViewDataSource, UITableVie
     @objc func dataBoardAction(_ sender: UIButton) {
 //        let dashBoard = DashBoardsController(nibName: "DashBoardsController", bundle: nil)
 //        self.navigationController?.pushViewController(dashBoard, animated: true)
+        
         let analyzeVC = AnalyzeDataController(nibName: "AnalyzeDataController", bundle: nil)
         self.navigationController?.pushViewController(analyzeVC, animated: true)
+        
     }
     
     // alarm Action

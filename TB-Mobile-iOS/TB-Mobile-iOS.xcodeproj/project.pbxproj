@@ -101,6 +101,7 @@
 		72D6B78A206DCDDC0068AA03 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72D6B788206DCDDC0068AA03 /* Main.storyboard */; };
 		72D6B78C206DCDDC0068AA03 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72D6B78B206DCDDC0068AA03 /* Assets.xcassets */; };
 		72D6B78F206DCDDC0068AA03 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72D6B78D206DCDDC0068AA03 /* LaunchScreen.storyboard */; };
+		72E1EF3B2189A80300557F0C /* WKDashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E1EF3A2189A80300557F0C /* WKDashViewController.swift */; };
 		72E3E51B20E1DB6F0002A457 /* DetailMonitorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E3E51920E1DB6F0002A457 /* DetailMonitorController.swift */; };
 		72E3E51C20E1DB6F0002A457 /* DetailMonitorController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72E3E51A20E1DB6F0002A457 /* DetailMonitorController.xib */; };
 		72E3E52520E2392C0002A457 /* DetailMonitorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E3E52320E2392C0002A457 /* DetailMonitorCell.swift */; };
@@ -226,6 +227,7 @@
 		72D6B78B206DCDDC0068AA03 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		72D6B78E206DCDDC0068AA03 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		72D6B790206DCDDC0068AA03 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		72E1EF3A2189A80300557F0C /* WKDashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WKDashViewController.swift; sourceTree = "<group>"; };
 		72E3E51920E1DB6F0002A457 /* DetailMonitorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMonitorController.swift; sourceTree = "<group>"; };
 		72E3E51A20E1DB6F0002A457 /* DetailMonitorController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailMonitorController.xib; sourceTree = "<group>"; };
 		72E3E52320E2392C0002A457 /* DetailMonitorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMonitorCell.swift; sourceTree = "<group>"; };
@@ -459,6 +461,7 @@
 				7227D36621758BA30088931C /* MonitoringController.xib */,
 				7227D36F2175CF840088931C /* StartMonitorController.swift */,
 				7227D3702175CF840088931C /* StartMonitorController.xib */,
+				72E1EF3A2189A80300557F0C /* WKDashViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -928,6 +931,7 @@
 				72D18C9120D8E22E0003FCF9 /* MessageViewController.swift in Sources */,
 				72B90B7A20B7EB9E00FD2869 /* OtherInfoCell.swift in Sources */,
 				7283919021056B8E0070656B /* webView缓存.xcdatamodeld in Sources */,
+				72E1EF3B2189A80300557F0C /* WKDashViewController.swift in Sources */,
 				72FAE9E320E0E04200724796 /* ApplicationItemCell.swift in Sources */,
 				728193982074613E00A4D5F3 /* StringUtil.swift in Sources */,
 				723CF8AB20EB4EC500761F99 /* DetailDashboardCell.swift in Sources */,
